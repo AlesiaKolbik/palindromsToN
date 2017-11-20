@@ -8,18 +8,24 @@ public class Main {
 		System.out.print("Введите целое число:");
 		int digit = inputDigitScanner.nextInt();
 		for (int i = 1; i < digit; i++) {
-			if (i >= 1 && i <= 9) {
-				System.out.print(i+" ");
-				continue;
-			} else {
-				String digitString = String.valueOf(i);
-				String digitInvers = new String();
-				for (int j = digitString.length() - 1; j >= 0; j--) {
-					digitInvers += digitString.charAt(j);
-				}
-				if (digitString.equals(digitInvers))
-					System.out.print(i+" ");
+			if (isPalindrom(i)) {
+				System.out.print(i + " ");
 			}
 		}
+	}
+
+	private static boolean isPalindrom(int number) {
+		boolean isPalindrom = true;
+		String digitString = String.valueOf(number);
+		int length = digitString.length();
+
+		for (int i = 0; i <= length / 2; i++) {
+			if (digitString.charAt(i) != digitString.charAt(length - 1 - i)) {
+				isPalindrom = false;
+				break;
+			}
+		}
+
+		return isPalindrom;
 	}
 }
